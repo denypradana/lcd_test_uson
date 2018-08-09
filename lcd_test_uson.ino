@@ -3,15 +3,17 @@
 #include <LiquidCrystal.h>
 
 LiquidCrystal lcd(3,2,4,5,6,7);
-const int TRIG_PIN = 12;// pin triger sensor ultrasonic di koneksikan ke pin 12 pada arduino 
-const int ECHO_PIN = 11;// pin echo sensor ultrasonic di koneksikan ke pin 11 pada arduino
-
+const int TRIG_PIN = 4;// pin triger sensor ultrasonic di koneksikan ke pin 12 pada arduino 
+const int ECHO_PIN = 5;// pin echo sensor ultrasonic di koneksikan ke pin 11 pada arduino
+const int pinRelay = 2;
 void setup() {
   // initialize serial communication:
   Serial.begin(9600);
-
+  
   pinMode(TRIG_PIN,OUTPUT);
   pinMode(ECHO_PIN,INPUT);
+  pinMode(pinRelay,OUTPUT);
+  digitalWrite(pinRelay, LOW);
   lcd.begin(16,2);
   lcd.setCursor(0,0);
   lcd.print("Arduino VS Sensor");
@@ -52,15 +54,18 @@ void loop()
     Serial.println("CM");
   lcd.clear();
   lcd.setCursor(0,0);
-  //lcd.print("Jarak");
-  //lcd.setCursor(0,1);
+  lcd.print("Jarak");
+  lcd.setCursor(0,1);
   lcd.print(distanceCm);
-  //lcd.print("Cm");
-  
+  lcd.print("Cm");
+    digitalWrite(pinRelay, LOW);
   }
   else if (distanceCm > 5000){
     lcd.setCursor(2,0);
-    lcd.print ("OUT OF RANGE");
+    lcd.print ("Too Far");
+    Serial.print(distanceCm);
+    Serial.println("CM");
+    digitalWrite(pinRelay, HIGH);
   }
   
   {
