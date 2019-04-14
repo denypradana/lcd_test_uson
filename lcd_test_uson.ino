@@ -3,8 +3,8 @@
 #include <LiquidCrystal.h>
 
 LiquidCrystal lcd(3,2,4,5,6,7);
-const int TRIG_PIN = 4;// pin triger sensor ultrasonic di koneksikan ke pin 12 pada arduino 
-const int ECHO_PIN = 5;// pin echo sensor ultrasonic di koneksikan ke pin 11 pada arduino
+const int TRIG_PIN = 4;// pin triger sensor ultrasonic di koneksikan ke pin 4 pada arduino 
+const int ECHO_PIN = 5;// pin echo sensor ultrasonic di koneksikan ke pin 5 pada arduino
 const int pinRelay = 2;
 void setup() {
   // initialize serial communication:
