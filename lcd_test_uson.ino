@@ -1,8 +1,5 @@
-
-
-#include <LiquidCrystal.h>
-
-LiquidCrystal lcd(3,2,4,5,6,7);
+#include <LiquidCrystal_I2C.h>
+LiquidCrystal_I2C lcd(0x27, 16, 2);
 const int TRIG_PIN = 4;// pin triger sensor ultrasonic di koneksikan ke pin 4 pada arduino 
 const int ECHO_PIN = 5;// pin echo sensor ultrasonic di koneksikan ke pin 5 pada arduino
 const int pinRelay = 2;
